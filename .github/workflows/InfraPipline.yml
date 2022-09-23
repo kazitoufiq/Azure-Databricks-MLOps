@@ -51,6 +51,8 @@ jobs:
   #############################################################
   Build:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
     # Checkout code
     steps:
@@ -80,7 +82,6 @@ jobs:
     needs: Build
     runs-on: ubuntu-latest
     env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       resourceGroupName: '${{ github.event.inputs.RESOURCE_GROUP }}-Dev'
       databricksWorkspaceName: '${{ github.event.inputs.WORKSPACE_NAME }}-Dev'
       keyVaultName: '${{ github.event.inputs.KEY_VAULT_NAME }}-Dev'
